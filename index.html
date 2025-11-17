@@ -3,61 +3,80 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Yeo Portfolio</title>
+  <title>Eugenio | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-  <div class="container nav">
-    <div class="brand">
-      <span class="dot"></span> <span>YEO JIN</span>
+    <div class="container nav">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>YEO JIN</span>
+      </div>
+
+      <!-- Hamburger button -->
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="project.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <!-- Hamburger button -->
-    <button
-      class="nav-toggle"
-      id="navToggle"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-    >
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-
-    <!-- Add a class to nav so we can target it -->
-    <nav class="nav-menu" id="navMenu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="project.html">Projects</a></li>
-        <li><a href="skills.html">Skills</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
+  </header>
 
   <main>
     <section class="hero">
       <div class="container hero-wrap">
-        <div>
+        <div class="hero-text">
           <div class="kicker">PORTFOLIO</div>
           <h1>Hi, I’m Eugenio — I design and build clean, fast web experiences.</h1>
-          <p class="lead"><strong>Welcome!</strong> I create fast, elegant websites that feel effortless to use and leave a lasting impression.</p>
+          <p class="lead">
+            <strong>Welcome!</strong> I create fast, elegant websites that feel effortless to use and leave a lasting impression.
+          </p>
           <div class="stats">
-            <div class="stat"><b>1+ yrs</b><span class="muted">Experience</span></div>
-            <div class="stat"><b>3</b><span class="muted">Projects</span></div>
-            <div class="stat"><b>~95</b><span class="muted">Lighthouse</span></div>
+            <div class="stat">
+              <b>1+ yrs</b>
+              <span class="muted">Experience</span>
+            </div>
+            <div class="stat">
+              <b>3</b>
+              <span class="muted">Projects</span>
+            </div>
+            <div class="stat">
+              <b>~95</b>
+              <span class="muted">Lighthouse</span>
+            </div>
           </div>
-          <p><a class="btn" href="project.html">View projects</a></p>
-          <p><a class="btn" href="about.html">About me</a></p>
+          <div class="hero-actions">
+            <a class="btn primary" href="project.html">View projects</a>
+            <a class="btn ghost" href="about.html">About me</a>
+          </div>
         </div>
-        <div class="hero-card"><img src="assets/profile.jpg" alt="Portrait"></div>
+        <div class="hero-card">
+          <img src="assets/profile.jpg" alt="Portrait of Eugenio" />
+        </div>
       </div>
     </section>
-     
-    <footer class="footer">
-      <div class="container">© <span id="year"></span> Eugenio — All rights reserved.</div>
-    </footer>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Eugenio — All rights reserved.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
