@@ -1,0 +1,111 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yeo Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+  <div class="container nav">
+    <div class="brand">
+      <span class="dot"></span> <span>YEO JIN</span>
+    </div>
+
+    <!-- Hamburger button -->
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Add a class to nav so we can target it -->
+    <nav class="nav-menu" id="navMenu">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+ 
+ <!-- Skills (NEW) -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <h2>Skills</h2>
+          <p class="muted">What I use to build delightful, fast experiences.</p>
+        </div>
+
+        <div class="skills-wrap">
+          <p class="skills-lead">
+            I focus on modern, accessible front-end foundations, pairing clean UI with performance
+            and maintainable code. Below are my core strengths and tools I reach for daily.
+          </p>
+
+          <div class="chips" aria-label="Skill tags">
+            <span class="chip">Semantic HTML</span>
+            <span class="chip">Responsive CSS</span>
+            <span class="chip">Vanilla JS</span>
+            <span class="chip">Accessibility (a11y)</span>
+            <span class="chip">Performance</span>
+            <span class="chip">Figma → Code</span>
+            <span class="chip">Git</span>
+            <span class="chip">Netlify/Vercel</span>
+          </div>
+        </div>
+
+        <div class="skills-grid" style="margin-top:20px">
+          <!-- Use data-val for animation target (percentage 0–100) -->
+          <div class="meter" data-val="90">
+            <div class="meter-ring" aria-hidden="true"><span class="meter-val">0%</span></div>
+            <label>HTML/CSS</label>
+          </div>
+          <div class="meter" data-val="80">
+            <div class="meter-ring" aria-hidden="true"><span class="meter-val">0%</span></div>
+            <label>JavaScript</label>
+          </div>
+          <div class="meter" data-val="78">
+            <div class="meter-ring" aria-hidden="true"><span class="meter-val">0%</span></div>
+            <label>UI Design</label>
+          </div>
+          <div class="meter" data-val="72">
+            <div class="meter-ring" aria-hidden="true"><span class="meter-val">0%</span></div>
+            <label>Accessibility</label>
+          </div>
+          <div class="meter" data-val="75">
+            <div class="meter-ring" aria-hidden="true"><span class="meter-val">0%</span></div>
+            <label>Performance</label>
+          </div>
+          <div class="meter" data-val="70">
+            <div class="meter-ring" aria-hidden="true"><span class="meter-val">0%</span></div>
+            <label>React Basics</label>
+          </div>
+          <div class="meter" data-val="65">
+            <div class="meter-ring" aria-hidden="true"><span class="meter-val">0%</span></div>
+            <label>Node.js Basics</label>
+          </div>
+          <div class="meter" data-val="60">
+            <div class="meter-ring" aria-hidden="true"><span class="meter-val">0%</span></div>
+            <label>Figma</label>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <footer class="footer">
+      <div class="container">© <span id="year"></span> Eugenio — All rights reserved.</div>
+    </footer>
+
+    <script src="script.js">
+
+    </script>
