@@ -69,3 +69,40 @@ if (navToggle && navMenu) {
   });
 }
 
+// THEME SWITCH (supports multiple toggles)
+(function () {
+  const root = document.documentElement;
+  const toggles = document.querySelectorAll('input[data-theme-toggle]');
+  if (!toggles.length) return;
+
+  const applyTheme = (theme) => {
+    root.setAttribute('data-theme', theme);
+    toggles.forEach((t) => {
+      t.checked = theme === 'dark';
+    });
+  };
+
+  // 1. Load saved theme or default
+  const stored = localStorage.getItem('theme');
+  let initialTheme;
+
+  if (stored === 'light' || stored === 'dark') {
+    initialTheme = stored;
+  } else {
+    initialTheme = 'dark'; // default
+  }
+
+  applyTheme(initialTheme);
+
+  // 2. Listen to changes on any toggle
+  toggles.forEach((toggle) => {
+    toggle.addEventListener('change', () => {
+      const nextTheme = toggle.checked ? 'dark' : 'light';
+      applyTheme(nextTheme);
+      localStorage.setItem('theme', nextTheme);
+    });
+  });
+})();
+
+
+

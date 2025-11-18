@@ -13,6 +13,18 @@
       <span class="dot"></span> <span>YEO JIN</span>
     </div>
 
+    <!-- 🌙 Mobile switch (outside, near hamburger) -->
+    <label class="ui-switch ui-switch--mobile">
+      <input
+        type="checkbox"
+        data-theme-toggle
+        aria-label="Toggle dark mode"
+      />
+      <div class="slider">
+        <div class="circle"></div>
+      </div>
+    </label>
+    
     <!-- Hamburger button -->
     <button
       class="nav-toggle"
@@ -33,6 +45,21 @@
         <li><a href="project.html">Projects</a></li>
         <li><a href="skills.html">Skills</a></li>
         <li><a class="active" href="contact.html">Contact</a></li>
+
+         <!-- 🌙 Desktop switch (inside menu, near Contact) -->
+        <li class="theme-switch-wrapper">
+          <label class="ui-switch ui-switch--desktop">
+            <input
+              type="checkbox"
+              data-theme-toggle
+              aria-label="Toggle dark mode"
+            />
+            <div class="slider">
+              <div class="circle"></div>
+            </div>
+          </label>
+        </li>
+        
       </ul>
     </nav>
   </div>

@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/png" href="assets/New Project (1).png" />
   <title>Eugenio | Portfolio</title>
+
 
  
   <link
@@ -14,36 +16,66 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <span class="dot"></span>
-        <span> Talk to Me</span>
-      </div>
-
-      <!-- Hamburger button -->
-      <button
-        class="nav-toggle"
-        id="navToggle"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-      >
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-
-      <nav class="nav-menu" id="navMenu">
-        <ul>
-          <li><a class="active" href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="project.html">Projects</a></li>
-          <li><a href="skills.html">Skills</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+ <header>
+  <div class="container nav">
+    <div class="brand">
+      <span class="dot"></span> <span>YEO JIN</span>
     </div>
-  </header>
+
+    <!-- 🌙 Mobile switch (outside, near hamburger) -->
+    <label class="ui-switch ui-switch--mobile">
+      <input
+        type="checkbox"
+        data-theme-toggle
+        aria-label="Toggle dark mode"
+      />
+      <div class="slider">
+        <div class="circle"></div>
+      </div>
+    </label>
+
+    <!-- Hamburger button -->
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Nav menu -->
+    <nav class="nav-menu" id="navMenu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a class="active" href="contact.html">Contact</a></li>
+
+        <!-- 🌙 Desktop switch (inside menu, near Contact) -->
+        <li class="theme-switch-wrapper">
+          <label class="ui-switch ui-switch--desktop">
+            <input
+              type="checkbox"
+              data-theme-toggle
+              aria-label="Toggle dark mode"
+            />
+            <div class="slider">
+              <div class="circle"></div>
+            </div>
+          </label>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
 
   <main>
     <section class="hero">
@@ -74,7 +106,7 @@
           </div>
         </div>
         <div class="hero-card">
-          <img src="assets/profile.jpg" alt="Portrait of Eugenio" />
+          <img src="assets/7.jpg" alt="Portrait of Eugenio" />
         </div>
       </div>
     </section>
@@ -83,7 +115,7 @@
   <!-- ⭐ Logo carousel at the bottom ⭐ -->
 <section class="logo-carousel">
   <div class="container">
-    <h2 class="logo-carousel-title" style="text-align:center; margin-bottom: 40px;">The Companies I've Work</h2>
+    <h2 class="logo-carousel-title" style="text-align:center; margin-bottom: 40px;">Companies I've Work</h2>
 
     <div
       id="logoCarousel"
@@ -148,7 +180,7 @@
               src="assets/quality (1).png"
               class="d-block"
               alt="Logo 3"
-              style="max-height: 100px;"
+              style="max-height: 80px;"
             />
           </div>
         </div>
