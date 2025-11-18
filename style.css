@@ -360,7 +360,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #0b0b0f; /* or your existing background */
+  background: transparent; /* or your existing background */
 }
 
 .nav {
