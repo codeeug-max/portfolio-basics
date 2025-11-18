@@ -4,6 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Eugenio | Portfolio</title>
+
+ 
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,7 +18,7 @@
     <div class="container nav">
       <div class="brand">
         <span class="dot"></span>
-        <span>YEO JIN</span>
+        <span> Talk to Me</span>
       </div>
 
       <!-- Hamburger button -->
@@ -49,8 +56,8 @@
           </p>
           <div class="stats">
             <div class="stat">
-              <b>1+ yrs</b>
-              <span class="muted">Experience</span>
+              <b>3+ yrs</b>
+              <span class="muted">Work Experience</span>
             </div>
             <div class="stat">
               <b>3</b>
@@ -73,10 +80,107 @@
     </section>
   </main>
 
+  <!-- ⭐ Logo carousel at the bottom ⭐ -->
+<section class="logo-carousel">
+  <div class="container">
+    <h2 class="logo-carousel-title" style="text-align:center; margin-bottom: 40px;">The Companies I've Work</h2>
+
+    <div
+      id="logoCarousel"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-interval="5000"
+    >
+      <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center align-items-center">
+            <img
+              src="assets/artyard.png"
+              class="d-block"
+              alt="Logo 1"
+              style="max-height: 80px;"
+            />
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center align-items-center">
+            <img
+              src="assets/obilogo.png"
+              class="d-block"
+              alt="Logo 2"
+              style="max-height: 80px;"
+            />
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center align-items-center">
+            <img
+              src="assets/maison.png"
+              class="d-block"
+              alt="Logo 3"
+              style="max-height: 100px;"
+            />
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center align-items-center">
+            <img
+              src="assets/macuto.png"
+              class="d-block"
+              alt="Logo 3"
+              style="max-height: 100px;"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Optional: Previous/Next controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#logoCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#logoCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+
   <footer class="footer">
     <div class="container">© <span id="year"></span> Eugenio — All rights reserved.</div>
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Bootstrap JS (needed for carousel controls) -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.querySelector('#logoCarousel');
+    const bsCarousel = new bootstrap.Carousel(carousel, {
+      interval: false, // Disable Bootstrap auto-slide
+      ride: false
+    });
+
+    // Custom auto-slide every 5 seconds
+    setInterval(() => {
+      bsCarousel.next();
+    }, 3000);
+  });
+</script>
+
 </body>
 </html>
