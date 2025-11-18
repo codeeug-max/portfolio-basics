@@ -49,16 +49,14 @@ const obs = new IntersectionObserver((entries) => {
 meters.forEach(m => obs.observe(m));
 
 // NAV HAMBURGER
-const navToggle = document.getElementById("navToggle");
-const navMenu = document.getElementById("navMenu");
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
 
-if (navToggle && navMenu) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+navToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('is-open');
+  // ...
+});
 
-    navToggle.setAttribute("aria-expanded", String(!isOpen));
-    navMenu.classList.toggle("is-open");
-  });
 
   // Optional: close menu when a link is clicked (better UX on mobile)
   navMenu.addEventListener("click", (e) => {
@@ -67,7 +65,7 @@ if (navToggle && navMenu) {
       navMenu.classList.remove("is-open");
     }
   });
-}
+
 
 // THEME SWITCH (supports multiple toggles)
 (function () {

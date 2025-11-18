@@ -13,29 +13,27 @@
       <span class="dot"></span> <span>YEO JIN</span>
     </div>
 
-    <!-- 🌙 Mobile switch (outside, near hamburger) -->
-    <label class="ui-switch ui-switch--mobile">
-      <input
-        type="checkbox"
-        data-theme-toggle
-        aria-label="Toggle dark mode"
-      />
-      <div class="slider">
-        <div class="circle"></div>
-      </div>
-    </label>
-    
-    <!-- Hamburger button -->
-    <button
-      class="nav-toggle"
-      id="navToggle"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-    >
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
+     <!-- 🌙 Mobile switch (outside, near hamburger) -->
+          <label class="ui-switch ui-switch--mobile">
+        <input
+          type="checkbox"
+          data-theme-toggle
+          aria-label="Toggle dark mode"
+        />
+        <div class="slider">
+          <div class="circle"></div>
+        </div>
+      </label>
+
+          <!-- !-- New hamburger with checkbox + animation --> 
+      <input type="checkbox" id="navToggle" class="nav-checkbox" />
+
+      <label class="nav-toggle" for="navToggle" aria-label="Toggle navigation">
+        <div id="bar1" class="bars"></div>
+        <div id="bar2" class="bars"></div>
+        <div id="bar3" class="bars"></div>
+      </label>
+
 
     <!-- Add a class to nav so we can target it -->
     <nav class="nav-menu" id="navMenu">
