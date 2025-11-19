@@ -56,7 +56,9 @@ html, body {
 a { color: var(--brand); text-decoration: none; }
 img { border-radius: 12px; display: block; max-width: 100%; }
 
-.container { margin: 0 auto; max-width: var(--maxw); padding: 0 20px; }
+.container { margin: 0 auto;
+   max-width: var(--maxw); 
+   padding: 0 20px; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
@@ -395,9 +397,16 @@ DARK MODE
 .hero { padding: 86px 0 40px; }
 .hero-wrap { align-items: center; display: grid; gap: 36px; grid-template-columns: 1.1fr .9fr; }
 .kicker { color: var(--brand-2); font-size: .8rem; font-weight: 800; letter-spacing: .2em; }
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: .3rem 0 1rem; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); 
+     line-height: 1.1; 
+     margin: .3rem 0 1rem;
+    }
 .lead { color: var(--muted); font-size: 1.1rem; max-width: 60ch; }
-.hero-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; }
+/* .hero-card { background: var(--card); 
+  border: 1px solid var(--border); 
+  border-radius: var(--radius); 
+  box-shadow: var(--shadow); 
+  padding: 16px; } */
 .stats { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
 .stat { background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; min-width: 120px; padding: 12px 14px; }
 .stat b { display: block; font-size: 1.2rem; }
@@ -484,9 +493,16 @@ section { border-top: 1px solid var(--border); padding: 56px 0; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; }
 .contact-card {
   background: linear-gradient(180deg, rgba(124,92,255,.12), rgba(0,209,178,.12));
-  border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+  border: 1px solid var(--border); 
+  border-radius: var(--radius); 
+  padding: 18px; 
+  box-shadow: var(--shadow);
 }
-.contact-card .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.contact-card .row { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+   gap: 12px; }
 .contact-card .big {
   font-size: 1.6rem; font-weight: 800; letter-spacing: .3px;
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
@@ -659,9 +675,57 @@ header {
     transform: translateY(0);
   }
 }
-
-
 /* =========================================================================================== */
 
+/* <!-- Put this anywhere in your  or above the card --> */
 
-/* =========================================================================================== */
+  .contact-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .github-tooltip {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .github-icon {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease, stroke 0.2s ease;
+    cursor: pointer;
+  }
+
+  .github-tooltip:hover .github-icon {
+    transform: scale(1.15);
+  }
+
+  /* TOOLTIP TEXT – hidden by default */
+  .github-tooltip-text {
+    position: absolute;
+    bottom: 120%;                 /* above the icon */
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    white-space: nowrap;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  /* Show tooltip on hover */
+  .github-tooltip:hover .github-tooltip-text {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-2px);
+  }
+
