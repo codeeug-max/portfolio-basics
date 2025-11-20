@@ -10,7 +10,7 @@
   <header>
   <div class="container nav">
     <div class="brand">
-      <span class="dot"></span> <span>Thanks for Visit's</span>
+      <span class="dot"></span> <span>Glad you’re here.</span>
     </div>
 
      <!-- 🌙 Mobile switch (outside, near hamburger) -->
@@ -25,14 +25,15 @@
         </div>
       </label>
 
-          <!-- !-- New hamburger with checkbox + animation --> 
-      <input type="checkbox" id="navToggle" class="nav-checkbox" />
+     
+    <!-- ✅ New tornado hamburger -->
+    <input type="checkbox" id="navToggle" class="nav-checkbox" />
 
-      <label class="nav-toggle" for="navToggle" aria-label="Toggle navigation">
-        <div id="bar1" class="bars"></div>
-        <div id="bar2" class="bars"></div>
-        <div id="bar3" class="bars"></div>
-      </label>
+    <label class="toggle nav-toggle" for="navToggle" aria-label="Toggle navigation">
+      <div class="bar bar--top"></div>
+      <div class="bar bar--middle"></div>
+      <div class="bar bar--bottom"></div>
+    </label>
 
 
     <!-- Add a class to nav so we can target it -->
@@ -89,6 +90,58 @@
         </div>
       </div>
     </section>
+
+    <!-- =================================================================================================== -->
+
+<!-- Education -->
+<section id="education">
+  <div class="container">
+    <div class="section-head">
+      <h2>Educational Background</h2>
+    </div>
+
+    <div class="education">
+
+      <!-- Tertiary -->
+      <div class="edu-card">
+        <img class="edu-logo" src="assets/jrmsu.webp" alt="Tertiary School Logo">
+        <h3>Tertiary Education</h3>
+        <p class="school">Jose Rizal Memorial State University</p>
+        <p class="course">BS Information System</p>
+        <p class="address">Sta. Cruz, Dapitan City</p>
+        <p class="year">2021 – 2024</p>
+      </div>
+
+      <!-- Secondary -->
+      <div class="edu-card">
+        <img class="edu-logo" src="assets/titay (2).webp" alt="Secondary School Logo">
+        <h3>Secondary Education</h3>
+        <p class="school">Titay National High School</p>
+        <p class="course">Humanities and Social Sciences</p>
+        <p class="address">Titay Zamboanga Sibugay</p>
+        <p class="year">2012 – 2018</p>
+      </div>
+
+      <!-- Primary -->
+      <div class="edu-card">
+        <img class="edu-logo" src="assets/imelda.webp" alt="Primary School Logo">
+        <h3>Primary Education</h3>
+        <p class="school">Paaralang Buhay ng Imelda</p>
+        <p class="address">Imelda, Titay Zambuanga Sibugay</p>
+        <p class="year">2006 – 2012</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Image Modal -->
+<div id="imgModal" class="img-modal">
+  <span class="img-modal-close">&times;</span>
+  <img class="img-modal-content" id="imgModalContent">
+</div>
+
+
+
     <footer class="footer">
       <div class="container">© <span id="year"></span> Eugenio — All rights reserved.</div>
     </footer>     

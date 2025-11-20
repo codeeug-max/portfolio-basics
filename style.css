@@ -144,6 +144,7 @@ header {
 
 .brand {
   color: var(--text);
+  margin-right: auto;
 }
 
 
@@ -219,7 +220,7 @@ DARK MODE
   --switch-height: 20px;
   /* circle */
   --circle-diameter: 32px;
-  --circle-bg: rgb(232, 89, 15);
+  --circle-bg: rgb(0, 0, 0);
   --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
 
   display: inline-flex;
@@ -330,65 +331,111 @@ DARK MODE
   }
 }
 
+/* ======================================= */
+
+/* Keep hiding the nav checkbox */
+.nav-checkbox {
+  display: none;
+}
+
+/* Container for the hamburger (you can hide/show via media query) */
+#menuToggle {
+  display: none; /* show on mobile in your media query */
+}
+
+/* From Uiverse.io (slightly adapted) */
+.toggle {
+  position: relative;
+  width: 40px;
+  cursor: pointer;
+  margin: auto;
+  display: block;
+  height: calc(4px * 3 + 11px * 2);
+}
+
+/* Reuse .nav-toggle if you want to control layout via media query */
+.nav-toggle {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: none; 
+}
+
+/* Bars */
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: calc(4px / 2);
+  background: var(--nav-icon); /* or var(--nav-icon) if you want theme aware */
+  color: inherit;
+  opacity: 1;
+  transition: none 0.35s cubic-bezier(.5,-0.35,.35,1.5) 0s;
+}
+
+/***** Tornado Animation *****/
+.bar--top {
+  bottom: calc(50% + 11px + 4px/ 2);
+  transition-property: bottom, transform;
+  transition-delay: calc(0s + 0.35s) * .6;
+}
+
+.bar--middle {
+  top: calc(50% - 4px / 2);
+  transition-property: opacity, transform;
+  transition-delay: calc(0s + 0.35s * .3);
+}
+
+.bar--bottom {
+  top: calc(50% + 11px + 4px / 2);
+  transition-property: top, transform;
+  transition-delay: 0s;
+}
+
+/* Use #navToggle instead of #checkbox */
+#navToggle:checked + .toggle .bar--top {
+  transform: rotate(-135deg);
+  transition-delay: 0s;
+  bottom: calc(50% - 4px / 2);
+}
+
+#navToggle:checked + .toggle .bar--middle {
+  opacity: 0;
+  transform: rotate(-135deg);
+  transition-delay: calc(0s + 0.35s * .3);
+}
+
+#navToggle:checked + .toggle .bar--bottom {
+  top: calc(50% - 4px / 2);
+  transform: rotate(-225deg);
+  transition-delay: calc(0s + 0.35s * .6);
+}
+
+
+@media (max-width: 768px) {
+  #menuToggle {
+    display: block;
+  }
+
+  /* .nav-menu {
+    your mobile styles (e.g. hidden by default, full-screen, etc.) 
+  } */
+}
+
+@media (min-width: 769px) {
+  #menuToggle {
+    display: none;
+  }
+}
+
 
 
 
  /* ===================== Theme Switch (Dark / Light) ===================== */
 
-/* Hamburger button base */
-/* Hide the checkbox itself */
-.nav-checkbox {
-  display: none;
-}
 
-/* Hamburger toggle (desktop: hidden, mobile: visible) */
-.nav-toggle {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  display: none;          /* shown only on mobile via media query */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition-duration: 0.3s;
-  padding: 0;
-  border: none;
-  background: none;
-}
-
-/* Bars (lines) */
-.nav-toggle .bars {
-  width: 100%;
-  height: 4px;
-  background-color: var(--nav-icon);
-  border-radius: 5px;
-  transition-duration: 0.3s;
-}
-
-/* Animation when opened (copied from your snippet, adapted) */
-#navToggle:checked + .nav-toggle #bar2 {
-  transform: translateY(8px) rotate(60deg);
-  transform-origin: right;
-  z-index: 2;
-}
-
-#navToggle:checked + .nav-toggle #bar1 {
-  transform: translateY(16px) rotate(-60deg);
-  transform-origin: left;
-  z-index: 1;
-}
-
-/* Optional: fade out the bottom bar */
-#navToggle:checked + .nav-toggle #bar3 {
-  opacity: 0;
-}
-
-/* Rotate whole icon a bit */
-#navToggle:checked + .nav-toggle {
-  transform: rotate(-90deg);
-}
 
 
 /* =========================================================
@@ -591,16 +638,7 @@ header {
   background: none;
   cursor: pointer;
   padding: 0.25rem;
-  margin-left: auto;
-}
-
-.nav-toggle .bar {
-  display: block;
-  width: 22px;
-  height: 2px;
-  margin: 4px 0;
-  background: #fff; /* match your theme */
-  transition: transform 0.2s ease, opacity 0.2s ease;
+   margin-right: 0 !important;
 }
 
 /* Mobile + small screens */
@@ -633,7 +671,7 @@ header {
   /* Small floating dropdown like in your sample */
   .nav-menu {
     position: absolute;
-    top: 110%;          /* just under the header */
+    top: 110%;
     right: 20px;
     background: var(--menu-bg);
     border-radius: 8px;
@@ -643,7 +681,7 @@ header {
     transform: translateY(-10px);
     transition: 300ms;
     border: 1px solid rgba(148, 163, 184, 0.18);
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.65);
+    /* box-shadow: 0 18px 45px rgba(15, 15, 15, 15); */
   }
 
   .nav-menu ul {
@@ -651,10 +689,10 @@ header {
     padding: 4px;
     gap: 4px;
   }
-
+/* 
   .nav-menu li {
     width: 100%;
-  }
+  } */
 
   .nav-menu a {
     display: block;
@@ -728,4 +766,132 @@ header {
     opacity: 1;
     transform: translateX(-50%) translateY(-2px);
   }
+  
+  /* ========================================================EDUCATION============================================== */
+
+/* --- Education Section --- */
+
+#education {
+  padding: 4rem 0;
+}
+
+.education {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.edu-card {
+  background: var(--card-bg, #ffffff);
+  padding: 2rem;
+  border-radius: 18px;
+  border: 1px solid var(--border, #e3e3e3);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+
+.edu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.1);
+}
+
+/* Logo styling */
+.edu-logo {
+  width: 200px;       /* your preferred size */
+  height: 200px;
+  object-fit: contain;
+  /* padding: 16px; */
+  background: #f8f8f8;
+  border-radius: 16px;
+
+  /* ⭐ Centering trick */
+  display: block;
+  margin: 0 auto 1.5rem auto;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+
+.edu-card h3 {
+  margin-bottom: 0.8rem;
+  color: var(--accent, #069992);
+}
+
+.edu-card .school {
+  font-weight: bold;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.edu-card .address {
+  color: var(--muted, #666);
+  margin-bottom: 0.4rem;
+}
+
+.edu-card .year {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* Dark mode support */
+[data-theme="dark"] .edu-card {
+  background: #111531;
+  border-color: #2d2d2d;
+}
+
+[data-theme="dark"] .edu-logo {
+  background: #2b2b2b;
+}
+
+/* ===========================================Modal================= */
+/* --- Image Modal --- */
+
+.img-modal {
+  display: none; 
+  position: fixed;
+  z-index: 9999;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.7);
+  cursor: zoom-out;
+}
+
+.img-modal-content {
+  display: block;
+  margin: auto;
+  max-width: 85%;
+  max-height: 85%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  animation: fadeIn 0.25s ease;
+}
+
+.img-modal-close {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.img-modal-close:hover {
+  color: #f44336;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+
 

@@ -102,5 +102,36 @@ navToggle.addEventListener('click', () => {
   });
 })();
 
+// ++++++++++++++++++++++++++++++++++++++++++++++Modal=++++++++++++++
+
+// Image modal viewer
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("imgModalContent");
+const closeBtn = document.querySelector(".img-modal-close");
+
+// Select all logos
+const logos = document.querySelectorAll(".edu-logo");
+
+// When logo clicked -> open modal
+logos.forEach(logo => {
+  logo.addEventListener("click", () => {
+    modal.style.display = "block";
+    modalImg.src = logo.src;
+  });
+});
+
+// Close when clicking X
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Close when clicking outside the image
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+
 
 
