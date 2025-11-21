@@ -442,18 +442,22 @@ DARK MODE
    Hero
    ========================================================= */
 .hero { padding: 86px 0 40px; }
-.hero-wrap { align-items: center; display: grid; gap: 36px; grid-template-columns: 1.1fr .9fr; }
+.hero-wrap { align-items: center; 
+  display: grid; gap: 36px; 
+  grid-template-columns: 1.1fr .9fr; }
 .kicker { color: var(--brand-2); font-size: .8rem; font-weight: 800; letter-spacing: .2em; }
 h1 { font-size: clamp(2rem, 5vw, 3.5rem); 
      line-height: 1.1; 
      margin: .3rem 0 1rem;
     }
 .lead { color: var(--muted); font-size: 1.1rem; max-width: 60ch; }
-/* .hero-card { background: var(--card); 
+.hero-card { 
+  width: 550px;
+  /* background: var(--card); 
   border: 1px solid var(--border); 
   border-radius: var(--radius); 
-  box-shadow: var(--shadow); 
-  padding: 16px; } */
+  box-shadow: var(--shadow);  */
+}
 .stats { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
 .stat { background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; min-width: 120px; padding: 12px 14px; }
 .stat b { display: block; font-size: 1.2rem; }
@@ -647,6 +651,9 @@ header {
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
+  }
+  .hero-card {
+    width: 350px;
   }
 
   /* Show the mobile theme switch */
