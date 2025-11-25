@@ -16,13 +16,13 @@ copyBtn?.addEventListener('click', async () => {
   setTimeout(() => copyNote.textContent = '', 2500);
 });
 
-/* Contact form (demo-only) */
-document.getElementById('contactForm')?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const note = document.getElementById('formNote');
-  note.textContent = 'Thanks! Your message has been captured locally (demo).';
-  setTimeout(() => note.textContent = '', 3000);
-});
+// /* Contact form (demo-only) */
+// document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   const note = document.getElementById('formNote');
+//   note.textContent = 'Thanks! Your message has been captured locally (demo).';
+//   setTimeout(() => note.textContent = '', 3000);
+// });
 
 /* Animate skill meters when in view */
 const meters = document.querySelectorAll('.meter');
@@ -131,6 +131,46 @@ modal.addEventListener("click", (e) => {
     modal.style.display = "none";
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const formNote = document.getElementById("formNote");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // stop normal page reload
+
+    formNote.textContent = "Sending...";
+    formNote.classList.remove("error");
+    formNote.classList.remove("success");
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        formNote.textContent = "Thanks! Your message has been sent.";
+        formNote.classList.add("success");
+        form.reset();
+      } else {
+        formNote.textContent = "Oops, something went wrong. Please try again.";
+        formNote.classList.add("error");
+      }
+    } catch (err) {
+      formNote.textContent = "Network error. Please try again.";
+      formNote.classList.add("error");
+    }
+  });
+});
+
 
 
 
