@@ -10,7 +10,7 @@
   --muted: #aab2c8;
   --brand: #7c5cff;
   --brand-2: #00d1b2;
-  --card: #111531;
+  --card: #111531; 
   --border: #262a4a;
   --shadow: 0 10px 20px rgba(0, 0, 0, .25);
   --radius: 14px;
@@ -32,6 +32,9 @@
   --nav-icon: #111827;
   --menu-bg: #e5e7f5;
   --menu-hover: #d7dbf0;
+  --chip-border: rgba(0, 0, 0, 0.18);   /* darker border for light mode */
+  /* --chip-bg: linear-gradient(135deg, var(--brand), var(--brand-2));       subtle light bubble */
+
 }
 
 :root[data-theme="dark"] {
@@ -845,12 +848,12 @@ header {
 
 /* Dark mode support */
 [data-theme="dark"] .edu-card {
-  background: #111531;
+  background: var(--card-bg, #ffffff05);
   border-color: #2d2d2d;
 }
 
 [data-theme="dark"] .edu-logo {
-  background: #111531;
+  background: transparent;
 }
 
 /* ===========================================Modal================= */
@@ -898,6 +901,113 @@ header {
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to   { opacity: 1; transform: scale(1); }
+}
+
+/* ========== Work Experience ========== */
+
+#experience {
+  padding: 4rem 0;
+}
+
+.experience {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+/* Card base */
+.exp-card {
+  position: relative;
+  padding: 1.5rem 1.5rem 1.75rem;
+  border-radius: 1rem;
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.06));
+  background: var(--card-bg, rgba(255, 255, 255, 0.02));
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+/* Accent left bar */
+.exp-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--accent, #5b8def),
+    var(--accent-soft, #9a6bff)
+  );
+  opacity: 0.8;
+}
+
+/* Hover state */
+.exp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.25);
+  border-color: var(--accent, #5b8def);
+  background: var(--card-bg-hover, rgba(255, 255, 255, 0.04));
+}
+
+/* Header */
+.exp-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.exp-role {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.exp-company {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Tags / meta */
+.exp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.exp-tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--chip-border, rgba(255, 255, 255, 0.14));
+  background: var(--chip-bg, rgba(255, 255, 255, 0.03));
+  opacity: 0.9;
+  /* color: white;
+  font-weight: 400; */
+}
+
+/* Description */
+.exp-body {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+/* Small screens */
+@media (max-width: 640px) {
+  #experience {
+    padding: 3rem 0;
+  }
+
+  .exp-card {
+    padding: 1.3rem 1.25rem 1.5rem;
+  }
 }
 
 
