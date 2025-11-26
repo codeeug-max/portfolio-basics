@@ -15,10 +15,17 @@
   --shadow: 0 10px 20px rgba(0, 0, 0, .25);
   --radius: 14px;
   --maxw: 1100px;
-  --nav-icon: #e5e7eb; /* NEW: hamburger color in dark mode */
+  --nav-icon: #e5e7eb;
   --menu-bg: #2a2f3b;
   --menu-hover: #323741;
+
+  /* 🔮 New: purple glow background for dark mode */
+  --page-bg:
+    radial-gradient(circle at 0% 0%, rgba(124, 92, 255, 0.45), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.25), transparent 55%),
+    linear-gradient(135deg, #050417, #090b23);
 }
+
 
 :root[data-theme="light"] {
   color-scheme: light;
@@ -35,6 +42,8 @@
   --chip-border: rgba(0, 0, 0, 0.18);   /* darker border for light mode */
   /* --chip-bg: linear-gradient(135deg, var(--brand), var(--brand-2));       subtle light bubble */
 
+  /* Light mode: just use the solid bg */
+  --page-bg: var(--bg);
 }
 
 :root[data-theme="dark"] {
@@ -48,13 +57,14 @@
 * { box-sizing: border-box; }
 
 html, body {
-  background: var(--bg);
+  background: var(--page-bg, var(--bg)); /* uses gradient if set, else falls back */
   color: var(--text);
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
 }
+
 
 a { color: var(--brand); text-decoration: none; }
 img { border-radius: 12px; display: block; max-width: 100%; }
@@ -444,7 +454,10 @@ DARK MODE
 /* =========================================================
    Hero
    ========================================================= */
-.hero { padding: 86px 0 40px; }
+.hero { 
+  position: relative;
+  padding: 86px 0 40px;
+ }
 .hero-wrap { align-items: center; 
   display: grid; gap: 36px; 
   grid-template-columns: 1.1fr .9fr; }
@@ -455,6 +468,8 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem);
     }
 .lead { color: var(--muted); font-size: 1.1rem; max-width: 60ch; }
 .hero-card { 
+  position: relative;
+  z-index: 1; /* keeps image above the glow */
   width: 550px;
   /* background: var(--card); 
   border: 1px solid var(--border); 
@@ -464,6 +479,94 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem);
 .stats { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
 .stat { background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; min-width: 120px; padding: 12px 14px; }
 .stat b { display: block; font-size: 1.2rem; }
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  width: 350px;          /* size of the circle – adjust if needed */
+  height: 350px;
+  border-radius: 50%;
+  
+  /* Purple gradient glow */
+  background: radial-gradient(circle at 30% 30%,
+    rgb(92, 16, 168),      
+    rgba(129, 140, 248, 0.95) 55%,
+    rgba(76, 29, 149, 0.6) 75%,
+    transparent 100%
+  );
+
+  
+  /* 🌌 Aurora green gradient */
+  /* background: radial-gradient(circle at 30% 30%,
+    rgba(190, 242, 100, 1),    
+    rgba(52, 211, 153, 0.95) 40%,  
+    rgba(16, 185, 129, 0.7) 65%,   
+    transparent 100%
+  ); */
+
+  filter: blur(50px);
+  opacity: 0.9;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;           /* behind the image */
+  pointer-events: none;
+
+  animation: heroGlowMorph 3s ease-in-out infinite alternate;
+
+  /* 🌀 circular motion */
+  /* animation: heroGlowOrbit 14s linear infinite; */
+}
+
+/* subtle morphing of the glow */
+@keyframes heroGlowMorph {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(-48%, -52%) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-52%, -48%) scale(0.95);
+    opacity: 0.85;
+  }
+}
+ /* @keyframes heroGlowOrbit {
+  0% {
+    transform: translate(-50%, -50%) translate(0, -14px);
+  }
+  25% {
+    transform: translate(-50%, -50%) translate(14px, 0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translate(0, 14px);
+  }
+  75% {
+    transform: translate(-50%, -50%) translate(-14px, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(0, -14px);
+  }
+} */
+
+/* Optional: reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .hero-card::before {
+    animation: none;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+}
+/* Optional: respect reduced motion */
+/* @media (prefers-reduced-motion: reduce) {
+  .hero-card::before {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
+} */
 
 /* =========================================================
    Sections
@@ -656,7 +759,11 @@ header {
     gap: 1rem;
   }
   .hero-card {
-    width: 350px;
+    width: 400px;
+  
+  }
+  .hero-card::before{
+    width: 250px;
   }
 
   /* Show the mobile theme switch */
@@ -1009,6 +1116,7 @@ header {
     padding: 1.3rem 1.25rem 1.5rem;
   }
 }
+
 
 
 
