@@ -55,6 +55,10 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 }
+:root[data-theme="light"] .stat-icon {
+  color: #000; /* Black in light mode */
+}
+
 
 /* =========================================================
    Base / Resets
@@ -212,7 +216,7 @@ header {
 }
 
 .hero-actions {
-  padding: 50px 1px 1px 1px;
+  padding: 20px 1px 1px 1px;
 }
 
 /* =========================================================
@@ -426,11 +430,11 @@ h1 {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 550px;        /* desktop max */
+  max-width: 600px;        /* desktop max */
 }
 
 /* Stats in hero */
-.stats {
+/* .stats {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
@@ -448,8 +452,69 @@ h1 {
 .stat b {
   display: block;
   font-size: 1.2rem;
+} */
+
+/* ============= New Stats Style ============= */
+/* ============= Stats Row with Icons ============= */
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  margin-top: 24px;
 }
 
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Different ratio for each stat (optional) */
+.stat:nth-child(1) { flex: 1.2; }
+.stat:nth-child(2) { flex: 1; }
+.stat:nth-child(3) { flex: 1.1; }
+
+/* Vertical separator between items */
+.stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 18%;
+  bottom: 18%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(148, 163, 184, 0.5),
+    transparent
+  );
+}
+
+/* Icon style */
+.stat-icon {
+  margin-bottom: 6px;
+  font-size: 1.4rem;
+  color: var(--brand);
+}
+
+/* Number + label styling */
+.stat b {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.stat .muted {
+  font-size: 0.9rem;
+}
+
+
+/* ========================================= */
 /* Glow behind hero card */
 .hero-card::before {
   content: "";
@@ -661,6 +726,8 @@ section {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 24px;
+  padding-bottom: 150px;
+ 
 }
 
 .contact-card {
@@ -771,6 +838,7 @@ textarea {
   gap: 10px;
   align-items: center;
 }
+
 
 /* =========================================================
    Footer
@@ -1211,5 +1279,53 @@ textarea {
   /* Smaller edu logos on tiny screens */
   .edu-logo {
     width: 130px;
+  }
+}
+/* =========================================================
+   Mobile Fix for 360px
+   ========================================================= */
+@media (max-width: 360px) {
+  /* Adjust the contact grid to stack vertically */
+  .contact-grid {
+    grid-template-columns: 1fr; /* Stack columns */
+  }
+
+  /* Adjust the contact card width and padding */
+  .contact-card {
+    padding: 14px; /* Slightly reduce padding for smaller screens */
+  }
+
+  /* Adjust the font size of the big text inside contact card */
+  .contact-card .big {
+    font-size: 1.4rem; /* Scale down the font for small screens */
+  }
+
+  /* Adjust the font size of muted text */
+  .contact-card .muted {
+    font-size: 0.85rem; /* Reduce font size for readability */
+  }
+
+  /* Stack the form fields vertically on smaller screens */
+  .form-row {
+    grid-template-columns: 1fr; /* Stack form fields in a single column */
+  }
+
+  /* Adjust the padding and font size of form input fields */
+  .field input,
+  .field textarea {
+    font-size: 0.9rem; /* Adjust font size to fit better */
+    padding: 14px; /* Adjust padding */
+  }
+
+  /* Adjust button size and padding */
+  .icon-btn,
+  .btn {
+    padding: 8px 10px; /* Reduce button size */
+    font-size: 0.85rem; /* Scale down font size for small screens */
+  }
+
+  /* Ensure labels for the form float correctly on small screens */
+  label.float {
+    font-size: 0.75rem; /* Adjust font size of labels */
   }
 }
